@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<title>Operaciones con PHP y AJAX</title>		
+        <!--<meta content="text/html; charset=utf-8" http-equiv="content-type">
+            <script src="script.js"></script>
+		-->        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	</head>
+	<body>	
+		<h1>Operaciones con PHP y AJAX</h1>
+
+        <script>                
+            $(document).ready(function(){
+                $("#b1").click(function(){                    
+                    $.post("index.js",
+                        //{ n1: $("#n1").val(), n2: $("#n2").val()},
+                        ` { "n1": ${ $("#n1").val() }, "n2": ${$("#n2").val()}}`
+                        , 
+                        function(data){
+                            document.getElementById("respuesta").innerHTML="El resultado es: "+data;
+                    });                    
+                });
+            
+            });
+        </script>
+
+		<p>Ingrese dos números y selecciones la operación a realizar:</p>
+			Numero 1: <input type="text" id="n1"/><br/>
+			Numero 2: <input type="text" id="n2"/><br/>			
+			<input type="button" value="Sumar" id="b1"/><br/>            
+		<span id="respuesta"></span>
+	</body>
+</html>
