@@ -5,11 +5,13 @@ const fs = require('fs');
 const server = http.createServer((req,res)=>{
 
     if(req.method==='POST'){
-        var body = "";
-        var respuesta = 0;
+        var body = "";        
         req.on("data", (d)=> {                        
-            data = JSON.parse(d.toString());            
-            respuesta = data.n1 + data.n2;                             
+            data = JSON.parse(d.toString());  
+            var respuesta = 'TIENE QUE INGRESAR DOS NÚMEROS';
+            if(data.n1!==null && data.n2 !==null){
+                respuesta = (data.n1 + data.n2).toString();
+            }
             res.end(respuesta.toString());
         });        
     }
